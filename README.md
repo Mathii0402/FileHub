@@ -1,16 +1,16 @@
-# Project Title
+# FileHub : Remote Server File Manager
 
-[Project Badge: e.g., Build Status, Version, etc.]
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-[Project description: A brief, engaging, and informative overview of your project.]
+
+[Project description: FileHub is a web-based application that allows users to interact with files and directories on a remote server through a user-friendly interface. This project is particularly useful in scenarios where users need to manage files and resources on a remote server, such as deploying and configuring web applications, sharing files, or simply accessing resources from a different location.]
 
 ## Table of Contents
 - [Features](#features)
 - [Demo](#demo)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+  
 
 ## Features
 
@@ -34,6 +34,14 @@
 
 ## Installation
 
-```bash
+
 - pip install -r requirements.txt
 - python server.py
+
+
+## Contributing
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-name`.
+3. Make your changes, commit them: `git commit -m 'Add feature'`.
+4. Push to the branch: `git push origin feature-name`.
+5. Submit a pull request.
