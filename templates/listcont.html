@@ -1,0 +1,48 @@
+<!-- Update the template to include folder links -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scraped Data</title>
+    <style>
+        /* Add CSS styles for icons here */
+        .folder-icon::before {
+            content: "\1F4C1"; /* Use a folder icon character */
+        }
+
+        .image-icon::before {
+            content: "\1F5BC"; /* Use an image icon character */
+        }
+        .file-icon::before {
+            content: "\1F4C4"; /* File icon character */
+        }
+        li
+        {
+            list-style: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>{{ url }}</h1>
+    <ul>
+        {% for item in data %}
+    <form action="/display_data" method="post">
+        <li>
+            {% if item.type == 'folder' %}
+                <span class="folder-icon"></span>
+            {% elif item.type == 'image' %}
+                <span class="image-icon"></span>
+            {% else %}
+                <span class="file-icon"></span>
+            {% endif %}
+            <!-- <input type="hidden" name="url" value="{{ item.url }}"> -->
+            <input type="hidden" name="file_name" value="{{ item.name }}">
+            <input type="submit" name="url" value="{{ item.name }}"><a href="{{ def_url }}" target="_blank">{{ def_url }}</a>
+
+        </li>
+    </form>
+{% endfor %}
+
+    </ul>
+</body>
+</html>
