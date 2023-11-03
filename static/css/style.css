@@ -1,0 +1,119 @@
+
+
+html{
+    min-height: 100%;
+    overflow: hidden;
+    }
+    .container1 {
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(15.5px);
+        -webkit-backdrop-filter: blur(15.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 20px;
+        margin: 0 auto;
+        width: 400px;
+        height: 170px;
+        font-family: monospace;
+    }
+    .typewriter{
+        color:rgb(152, 152, 152);
+        
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typewriter 2s steps(13) 0s alternate, blink 800ms steps(13) 1s normal;
+
+        border-right: 5px solid black;
+        
+    }
+
+    @keyframes typewriter {
+        from {
+            width: 0%;
+            height: 0%;
+        }
+
+        to {
+            width: 180%;
+            height: 40%;
+        }
+    }
+
+    @keyframes blink {
+        from {
+            border-color: black;
+        }
+
+        to {
+            border-color: transparent;
+        }
+    }
+
+    .container {
+        background-color: rgb(117, 231, 104);
+        padding: 20px;
+        margin: 0 auto;
+        width: 550px;
+        height: 200px;
+        font-family: monospace;
+    }
+    body {
+        background-color: #0e0a0d;
+        height: 100vh;
+    }
+    
+    .button-63 {
+        align-items: center;
+        background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        display: flex;
+        font-family: Phantomsans, sans-serif;
+        font-size: 20px;
+        width: 10px;
+        justify-content: center;
+        line-height: 1em;
+        padding: 17px 15px;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        cursor: pointer;
+        display: inline;
+    }
+    .typewriter a{
+        color: rgb(246, 231, 234);
+    }
+   
+    
+    .typewriter
+    {
+        color: rgb(152, 206, 3);
+    }
+    p {
+        font-size: 22px;
+        font-family: monospace;
+    }
+    .button-63:active,
+    .button-63:hover {
+        outline: 0;
+        padding: 20px 20px;
+    }
+    @media (min-width: 768px) {
+        .button-63 {
+            font-size: 24px;
+            min-width: 196px;
+        }
+    }
+   
+    .cent-cont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }

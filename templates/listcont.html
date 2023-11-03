@@ -1,48 +1,127 @@
 <!-- Update the template to include folder links -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>FileHub</title>
-    <style>
-        /* Add CSS styles for icons here */
-        .folder-icon::before {
-            content: "\1F4C1"; /* Use a folder icon character */
-        }
+    <link rel="stylesheet" href="/static/css/contentsyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
-        .image-icon::before {
-            content: "\1F5BC"; /* Use an image icon character */
-        }
-        .file-icon::before {
-            content: "\1F4C4"; /* File icon character */
-        }
-        li
-        {
-            list-style: none;
-        }
-        
-    </style>
 </head>
-<body>
-    <h1>{{ url }}</h1>
-    <ul>
-        {% for item in data %}
-    <form action="/display_data" method="post">
-        <li>
-            {% if item.type == 'folder' %}
-                <span class="folder-icon"></span>
-            {% elif item.type == 'image' %}
-                <span class="image-icon"></span>
-            {% else %}
-                <span class="file-icon"></span>
-            {% endif %}
-            <!-- <input type="hidden" name="url" value="{{ item.url }}"> -->
-            <input type="hidden" name="file_name" value="{{ item.name }}">
-            <input type="submit" name="url" value="{{ item.name }}"><a href="{{ def_url }}" target="_blank">{{ def_url }}</a>
 
-        </li>
-    </form>
-{% endfor %}
+<body>
+    <h1>{{ cur_dir }}</h1>
+
+    <div id="tog-switch" class="form-check form-switch">
+        <input id="btnSwitch" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Dark Mode</label>
+    </div>
+
+    <ul>
+        <form action="/display_data" method="post" enctype="multipart/form-data">
+
+            {% for item in data %}
+            <li>
+
+                <div class="file-container">
+                    {% if item.type == 'folder' %}
+                    <button type="submit" name="url" value="{{ item.name }}">
+                        <div class="folder-icon"></div><a id="names-{{ loop.index }}" class="names" >{{ item.name }}</a>
+                    </button>
+                    {% elif item.type == 'image' %}
+                    <div class="inline-container">
+                        <a target="_blank" href="{{ url }}/{{ item.name }}"><span class="image-icon"></span></a>
+                        <a id="names-{{ loop.index }}" class="names" href="{{ url }}/{{ item.name }}" download>{{ item.name }}</a>
+                    </div>
+                    {% else %}
+                    <div class="inline-container">
+                        <a target="_blank" href="{{ url }}/{{ item.name }}"><span class="file-icon"></span></a></span>
+                        <a id="names-{{ loop.index }}" class="names" href="{{ url }}/{{ item.name }}" download>{{ item.name }}</a>
+                    </div>
+
+                    {% endif %}
+                </div>
+                {% if item.type == 'folder' %}
+                <!-- <input type="hidden" name="file_name" value="{{ item.name }}">
+                <input type="submit"  name="url" value="{{ item.name }}"><a href="{{ url }}" target="_blank"></a> -->
+                {% else %}
+                <!-- <input type="hidden" name="file_name" value="{{ item.name }}">
+                <input type="submit" hidden name="url" value="{{ item.name }}"><a href="{{ url }}" target="_blank"></a> -->
+                {% endif %}
+
+
+            </li>
+            {% endfor %}
+            <div class="opt">
+                <input type="submit" name="home" id="home" value="home">
+                <input type="text" hidden name="data" value="{{ data }}">
+                <input type="file" name="file1">
+                <input type="submit" name="upload" value="UPLOAD">
+                <input type="text" hidden name="foldername" id="fname">
+                <input type="submit" onclick="folder_name()" name="fold" value="New Folder">
+            </div>
+        </form>
+
 
     </ul>
+
 </body>
-</html>
+<script src="/static/script/script.js"></script>
+<script>
+   // Function to toggle the theme and update font colors
+function toggleTheme() {
+    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+        for (let i = 1; i <= {{ data|length }}; i++) {
+            let names = document.getElementById(`names-${i}`);
+            if (names) {
+                names.style.color = '#111';
+            }
+        }
+        // Store the user's theme preference in local storage
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+        for (let i = 1; i <= {{ data|length }}; i++) {
+            let names = document.getElementById(`names-${i}`);
+            if (names) {
+                names.style.color = 'white';
+            }
+        }
+        // Store the user's theme preference in local storage
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Check if there is a stored theme preference in local storage
+const storedTheme = localStorage.getItem('theme');
+if (storedTheme) {
+    document.documentElement.setAttribute('data-bs-theme', storedTheme);
+    if (storedTheme === 'dark') {
+        // Change the font color of the elements with the "names" ID to white
+        for (let i = 1; i <= {{ data|length }}; i++) {
+            let names = document.getElementById(`names-${i}`);
+            if (names) {
+                names.style.color = 'white';
+            }
+        }
+    } else {
+        // Change the font color of the elements with the "names" ID to black
+        for (let i = 1; i <= {{ data|length }}; i++) {
+            let names = document.getElementById(`names-${i}`);
+            if (names) {
+                names.style.color = '#111';
+            }
+        }
+    }
+}
+
+// Add a click event listener to the theme switch button
+document.getElementById('btnSwitch').addEventListener('click', toggleTheme);
+
+    
+</script>

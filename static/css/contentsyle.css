@@ -1,0 +1,116 @@
+    body
+        {
+            background-color: black;
+            color: beige;
+            
+        }
+    li
+        {
+            display: inline;
+            padding: 15px;
+            margin-right: 20px;
+        }
+        /* Add CSS styles for icons here */
+        .folder-icon::before {
+            content: "\1F4C1"; /* Use a folder icon character */
+            font-size: 50px;
+        }
+
+        .image-icon::before {
+            content: "\1F5BC"; /* Use an image icon character */
+            font-size: 50px;
+        }
+        .file-icon::before {
+            content: "\1F4C4"; /* File icon character */
+            font-size: 50px;
+        }
+        button
+        {
+            background: transparent;
+            padding: 0%;
+            border: none;
+        }
+        .file-container
+        {
+            display: inline;
+        }
+        li a
+        {
+            list-style: none;
+            text-decoration: none;
+            display: inline;
+            /* color:#e84040; */
+            color: #111;
+            
+            font-family: Verdana;
+        }
+        .form-check
+        {
+            margin-left: 90%;
+        }
+
+        .content
+        {
+            display: flex;
+           
+        }
+        .inline-button {
+            display: inline-block;
+        }
+        
+        .inline-container {
+            display: inline-block;
+            vertical-align: top;
+            align-items: center;
+
+            justify-content: center;
+             /* Add some spacing between items */
+        }
+        .names
+        {
+            inline-size: 70px;
+            overflow-wrap: break-word;
+            text-align: center;
+        }
+        .inline-container a {
+            display: block; /* Display the file name as a block-level element */
+        }
+        .opt
+        {
+            margin-top: 30px;
+        }
+        .btn{/*dent around button*/
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
+            color: rgba(3, 169, 244, 0.54);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            background: #f7f7f7;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+        }
+        .btn .fa {/*Button itself*/
+            position: absolute;
+            content: '';
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            vertical-align: middle; 
+            left: 10px;
+            top: 9px;
+            border-radius: 50%;
+            font-size: 40px;
+            background-image: -webkit-linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+            background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+            border-bottom: solid 2px #b5b5b5;
+          }
+          
+        .btn .fa:active{
+            background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+            border-bottom: solid 2px #d8d8d8;
+        }

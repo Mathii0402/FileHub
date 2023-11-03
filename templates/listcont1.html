@@ -1,0 +1,83 @@
+<!-- Update the template to include folder links -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FileHub</title>
+    <style>
+        body
+        {
+            background-color: black;
+            color: beige;
+        }
+        /* Add CSS styles for icons here */
+        .folder-icon::before {
+            content: "\1F4C1"; /* Use a folder icon character */
+        }
+
+        .image-icon::before {
+            content: "\1F5BC"; /* Use an image icon character */
+        }
+        .file-icon::before {
+            content: "\1F4C4"; /* File icon character */
+        }
+        li
+        {
+            list-style: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>{{ cur_dir }}</h1>
+    <ul>
+        {% for item in data %}
+    <form action="/display_data" method="post" enctype="multipart/form-data">
+        <li>
+            {% if item.type == 'folder' %}
+                <span class="folder-icon"></span>
+            {% elif item.type == 'image' %}
+                <span class="image-icon"></span>
+                <a href="{{ url }}/{{ item.name }}" download>{{ item.name }}</a>
+            {% else %}
+                <span class="file-icon"></span>
+                <a href="{{ url }}/{{ item.name }}" download>{{ item.name }}</a>
+            {% endif %}
+            <!-- <input type="hidden" name="url" value="{{ item.url }}"> -->
+            {% if item.type == 'folder' %}
+                <input type="hidden" name="file_name" value="{{ item.name }}">
+                <input type="submit"  name="url" value="{{ item.name }}"><a href="{{ def_url }}" target="_blank">{{ def_url }}</a>
+            {% else %}
+                <input type="hidden" name="file_name" value="{{ item.name }}">
+                <input type="submit" hidden name="url" value="{{ item.name }}"><a href="{{ def_url }}" target="_blank">{{ def_url }}</a>
+            {% endif %}
+                
+        </li>
+        {% endfor %}
+        <input type="submit" name="home" value="home">
+        
+    </form>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="text" hidden name="data" value="{{ data }}">
+        <input type="file" name="file" >
+        <input type="text" hidden name="foldername" id ="fname">
+        <!-- <input type="submit" name="home" value="home"> -->
+        <input type="submit" onclick="folder_name()" name="fold" value="New Folder">
+        <input type="submit" name="upload" value="UPLOAD"> 
+    </form>
+    </ul>
+    
+</body>
+<script>
+    function folder_name()
+    {
+        fname = prompt("Enter the name of your folder: ");
+        if(fname!= null)
+        {
+            document.getElementById("fname").value = fname;
+            console.log(fname);
+        }
+
+    }
+</script>
+</html>
