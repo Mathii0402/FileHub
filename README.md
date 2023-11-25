@@ -28,9 +28,19 @@
 
 
 ## Demo
+### Landing Page:
+![Landin Page](https://github.com/Mathii0402/FileHub/blob/main/demo%20/screenshot1.png)
+Receiver should hit recieve button.
+### Reciever:
+![Receiver](https://github.com/Mathii0402/FileHub/blob/main/demo%20/screenshot2.png)
+Receiver can copy the link and send it to the sender who is in the network
+### Sender:
+After sender hits the send button he will see a prompt to enter the link of the receiver
+![Paste in the prompt](https://github.com/Mathii0402/FileHub/blob/main/demo%20/screenshot3.png)
+After pasting he will connect to the receivers system.
+### Transfer:
+![Upload using upload button](https://github.com/Mathii0402/FileHub/blob/main/demo%20/screenshot4.png)
 
-[Provide links, images, or GIFs to demonstrate your project in action.]
-[You can include interactive demos, live previews, and screenshots.]
 
 ## Installation
 
