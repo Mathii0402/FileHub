@@ -129,7 +129,7 @@ def display_data(fl=0):
                 app.config["UPLOAD_FOLDER"] = SAVE_DIR+fname
                 os.mkdir(app.config["UPLOAD_FOLDER"])
                 
-               
+                
        
         else:
             print("whyyyy")
